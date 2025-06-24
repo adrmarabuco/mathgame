@@ -374,11 +374,12 @@ def display_game_summary(results):
     print("\n" + "-"*50)
     print("QUESTION REVIEW".center(50))
     print("-"*50)
-    
+
     for i, result in enumerate(results, 1):
         status = "✓" if result['correct'] else "✗"
         print(f"{i}. {status} {result['question']} = {result['correct_answer']}")
         print(f"   Your answer: {result['user_answer']} ({result['time_taken']:.2f}s)")
+    print(f"Total Score: {total_score} points, {accuracy:.1f}%")
     
     print("\n" + "="*50)
     input("\nPress Enter to return to the main menu...")
