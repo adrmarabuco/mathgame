@@ -33,12 +33,9 @@ class MathGameUI:
     
     def __init__(self):
         """Initialize the UI components and game state"""
+        # Always create these elements regardless of environment
         self.game = MathGame()
         self.high_scores = HighScoreManager()
-        self.current_view = None
-        self.timer = None
-        self.timer_running = False
-        self.countdown_seconds = 0
         self.question_module = QuestionGenerator
         
         # Game state variables
@@ -48,6 +45,17 @@ class MathGameUI:
         self.round_num = 1
         self.operation_type = 1  # Default to addition
         self.difficulty = 1      # Default to easy
+        
+        # Early exit if not in Pythonista environment
+        # The global PYTHONISTA_AVAILABLE flag is already set at module level
+        if not PYTHONISTA_AVAILABLE:
+            return
+        
+        # Pythonista-specific UI initialization
+        self.current_view = None
+        self.timer = None
+        self.timer_running = False
+        self.countdown_seconds = 0
         
         # Setup main navigation
         self.nav_view = ui.NavigationView()
