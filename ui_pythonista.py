@@ -57,8 +57,13 @@ class MathGameUI:
         self.timer_running = False
         self.countdown_seconds = 0
         
-        # Setup main navigation
-        self.nav_view = ui.NavigationView()
+        # Create root view for navigation
+        root_view = ui.View()
+        root_view.name = 'MathMaster'
+        root_view.background_color = BACKGROUND_COLOR
+        
+        # Setup main navigation with the root view
+        self.nav_view = ui.NavigationView(root_view)
         self.nav_view.name = 'MathMaster'
         self.nav_view.background_color = BACKGROUND_COLOR
         self.nav_view.tint_color = TINT_COLOR
@@ -600,7 +605,14 @@ class MathGameUI:
         """Return to the main menu"""
         # Clear the navigation stack and rebuild main menu
         self.nav_view.close()
-        self.nav_view = ui.NavigationView()
+        
+        # Create root view for navigation
+        root_view = ui.View()
+        root_view.name = 'MathMaster'
+        root_view.background_color = BACKGROUND_COLOR
+        
+        # Create new navigation view with root view
+        self.nav_view = ui.NavigationView(root_view)
         self.nav_view.name = 'MathMaster'
         self.nav_view.background_color = BACKGROUND_COLOR
         self.nav_view.tint_color = TINT_COLOR
