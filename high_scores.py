@@ -38,10 +38,23 @@ class HighScoreManager:
             }
         }
         
+        # Define operation names directly to avoid issues with static method
+        operation_names = {
+            1: "addition",
+            2: "subtraction",
+            3: "multiplication",
+            4: "division",
+            5: "fractions",
+            6: "percentages",
+            7: "exponents",
+            8: "arrays",
+            9: "mixed_challenge"
+        }
+        
         # Initialize scores for each operation and difficulty
         for mode in ["normal_mode", "timed_mode"]:
             for op in range(1, 10):  # 1-9 operation types
-                op_name = QuestionGenerator.get_operation_name(op).lower().replace(" ", "_")
+                op_name = operation_names[op]
                 scores[mode][op_name] = {}
                 for diff in range(1, 4):  # 1-3 difficulty levels
                     scores[mode][op_name][f"difficulty_{diff}"] = {
